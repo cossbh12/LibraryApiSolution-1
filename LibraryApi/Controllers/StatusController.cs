@@ -50,7 +50,7 @@ namespace LibraryApi.Controllers
         // GET /employees/938938
         [HttpGet("employees/{employeeId:int}", Name = "employees#getanemployee")]
         public ActionResult GetAnEmployee(int employeeId)
-        {
+        { 
             // go to the database and get the thing...
             var response = new EmployeeResponse
             {
