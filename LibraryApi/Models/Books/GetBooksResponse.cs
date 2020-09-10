@@ -3,15 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace LibraryApi.Domain
+namespace LibraryApi.Models.Books
 {
-    public class Book
+    public class GetBooksResponse: Collection<GetBooksResponseItem>
+    {
+        public string Genre { get; set; }
+        public int Count { get; set; }
+    }
+
+    public class GetBooksResponseItem
     {
         public int Id { get; set; }
         public string Title { get; set; }
         public string Author { get; set; }
         public string Genre { get; set; }
-        public bool RemovedFromInventory { get; set; }
-      
     }
 }

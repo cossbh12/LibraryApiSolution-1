@@ -1,5 +1,6 @@
 ﻿using LibraryApi.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,10 +12,12 @@ namespace LibraryApi.Controllers
     {
 
         ISystemTime Clock;
+        IConfiguration Config;
 
-        public StatusController(ISystemTime clock)
+        public StatusController(ISystemTime clock, IConfiguration config)
         {
             Clock = clock;
+            Config = config;
         }
 
         [HttpPost("employees")]
@@ -82,7 +85,7 @@ namespace LibraryApi.Controllers
             var status = new StatusResponse
             {
                 Message = "Looks good on my end. Party On!",
-                CheckedBy = "Joe Schmidt",
+                CheckedBy = Config.GetValue<string>("onCall"),
                 WhenChecked = Clock.GetCurrent()
             };
 
