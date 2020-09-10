@@ -68,6 +68,8 @@ namespace LibraryApi.Controllers
         [HttpGet("/status")]
         public ActionResult GetStatus()
         {
+
+            // some stuff.
             var status = new StatusResponse
             {
                 Message = "Looks good on my end. Party On!",
