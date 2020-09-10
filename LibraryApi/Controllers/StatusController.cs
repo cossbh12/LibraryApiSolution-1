@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using LibraryApi.Services;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,13 @@ namespace LibraryApi.Controllers
 {
     public class StatusController : ControllerBase
     {
+
+        ISystemTime Clock;
+
+        public StatusController(ISystemTime clock)
+        {
+            Clock = clock;
+        }
 
         [HttpPost("employees")]
         public ActionResult Hire([FromBody] EmployeeCreateRequest employeeToHire)
@@ -75,7 +83,7 @@ namespace LibraryApi.Controllers
             {
                 Message = "Looks good on my end. Party On!",
                 CheckedBy = "Joe Schmidt",
-                WhenChecked = DateTime.Now
+                WhenChecked = Clock.GetCurrent()
             };
 
             return Ok(status);
