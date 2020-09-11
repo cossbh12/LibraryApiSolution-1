@@ -68,7 +68,7 @@ namespace LibraryApi.Controllers
             var response = new EmployeeResponse
             {
                 Id = employeeId,
-                Name = "Bob Smith",
+                Name = "Robert Smith",
                 Department = "DEV",
                 HireDate = DateTime.Now.AddDays(-399),
                 StartingSalary = 250000
